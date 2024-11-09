@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +17,15 @@ class PostController extends Controller
         //     ['title' => 'Forth post', ],
         // ];
 
-        $posts = DB::table('posts')->get();
+        $posts = Post::get();
 
-        return view('blog', compact('posts'));
+        return view('posts.index', compact('posts'));
+    }
+
+    // Practicing Type Hints
+    function show(Post $post)
+    {
+        // return $post;
+        return view('posts.show', ['post' => $post]);
     }
 }

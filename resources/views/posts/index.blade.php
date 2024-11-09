@@ -4,7 +4,9 @@
         Blog
     </x-slot>
     @foreach ($posts as $post)
-    <h2>{{ $post->title}}</h2>
+    <h2>
+        <a href="{{route('posts.show', $post)}}"> {{ $post->title}}</a>
+    </h2>
     {{-- @dump($post) --}}
     @endforeach
 </x-layout>
