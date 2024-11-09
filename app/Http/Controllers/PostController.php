@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -34,8 +33,16 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    function store()
+    function store(Request $request)
     {
-        return 'Process the form';
+        $post = new Post();
+        $post->title = $request->input('title');
+        $post->title = $request->input('body');
+        $post->save();
+
+        session()->flash('status', 'Post created');
+
+        // return redirect()->route('posts.index');
+        return to_route('posts.index');
     }
 }
