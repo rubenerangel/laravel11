@@ -2,12 +2,12 @@
     meta-title="Create New Post"
     meta-description="Form to create a new post"
 >
-    <h1>Create New Post</h1>
-    @dump($errors->all())
+    <h1>{{ __('Create New Post') }}</h1>
+    {{-- @dump($errors->all()) --}}
     <form method="POST" action="{{ route('posts.store') }}">
         @csrf
         <label for="">
-            <br>Title
+            <br>{{ __('Title') }}
             <br><input name="title" type="text" value="{{ old('title') }}">
             @error('title')
                 <br>
@@ -15,7 +15,7 @@
             @enderror
         </label>
         <label for="">
-            <br>Body
+            <br>{{ __('Body') }}
             <br><textarea name="body">{{ old('body') }}</textarea>
             @error('body')
                 <br>
@@ -23,10 +23,10 @@
             @enderror
         </label>
         <br>
-        <button type="submit">Send</button>
+        <button type="submit">{{ __('Send') }}</button>
     </form>
 
     <br>
-    <a href="{{route('posts.index')}}"> Back</a>
+    <a href="{{route('posts.index')}}">{{ __('Back') }}</a>
 
 </x-layout>

@@ -38,6 +38,8 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'min:4'],
             'body' => ['required'],
+        ], [
+            'title.required' => 'Error diferente :attribute'
         ]);
         $post = new Post();
         $post->title = $request->input('title');
