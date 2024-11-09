@@ -3,8 +3,8 @@
     <x-slot:sidebar>
         Blog
     </x-slot>
-    {{-- @dump($posts) --}}
     @foreach ($posts as $post)
-        <h2>{{ $post['title']}}</h2>
+    <h2>{{ $post->title}}</h2>
+    {{-- @dump($post) --}}
     @endforeach
 </x-layout>
