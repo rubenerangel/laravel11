@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog</title>
-</head>
-<body>
-    @include('partials.navigation')
+<x-layout meta-title="Blog" meta-description="Blog description" :sum="2+2">
     <h1>Blog</h1>
-</body>
-</html>
+    <x-slot:sidebar>
+        Blog
+    </x-slot>
+</x-layout>
