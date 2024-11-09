@@ -28,4 +28,14 @@ class PostController extends Controller
         // return $post;
         return view('posts.show', ['post' => $post]);
     }
+
+    function create() {
+        // return 'Create form';
+        return view('posts.create');
+    }
+
+    function store()
+    {
+        return 'Process the form';
+    }
 }
