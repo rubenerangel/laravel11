@@ -51,4 +51,13 @@ class PostController extends Controller
         // return redirect()->route('posts.index');
         return to_route('posts.index');
     }
+
+    function edit(Post $post)
+    {
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    function update() {
+        return 'Edit post';
+    }
 }
