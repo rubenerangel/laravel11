@@ -43,7 +43,7 @@ class PostController extends Controller
         ]);
         $post = new Post();
         $post->title = $request->input('title');
-        $post->title = $request->input('body');
+        $post->body = $request->input('body');
         $post->save();
 
         session()->flash('status', 'Post created');
@@ -57,7 +57,21 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
-    function update() {
-        return 'Edit post';
+    function update(Request $request, Post $post) {
+        $request->validate([
+            'title' => ['required', 'min:4'],
+            'body' => ['required'],
+        ], [
+            'title.required' => 'Error diferente :attribute'
+        ]);
+
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        session()->flash('status', 'Post updated!');
+
+        // return redirect()->route('posts.index');
+        return to_route('posts.show', $post);
     }
 }
