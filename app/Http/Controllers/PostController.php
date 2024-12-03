@@ -30,21 +30,29 @@ class PostController extends Controller
 
     function create() {
         // return 'Create form';
-        return view('posts.create');
+        return view('posts.create', ['post' => new Post]);
     }
 
     function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'title' => ['required', 'min:4'],
             'body' => ['required'],
         ], [
             'title.required' => 'Error diferente :attribute'
         ]);
-        $post = new Post();
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->save();
+
+        // $post = new Post();
+        // $post->title = $request->input('title');
+        // $post->body = $request->input('body');
+        // $post->save();
+
+        // Post::create([
+        //     'title' =>  $request->input('title'),
+        //     'body' => $request->input('body'),
+        // ]);
+
+        Post::create($validated);
 
         session()->flash('status', 'Post created');
 
@@ -65,9 +73,14 @@ class PostController extends Controller
             'title.required' => 'Error diferente :attribute'
         ]);
 
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->save();
+        // $post->title = $request->input('title');
+        // $post->body = $request->input('body');
+        // $post->save();
+
+        $post->update([
+            'title' => $request->input('title'),
+            'body' => $request->input('body'),
+        ]);
 
         session()->flash('status', 'Post updated!');
 
