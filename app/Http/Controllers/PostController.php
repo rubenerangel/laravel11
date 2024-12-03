@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SavePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -33,14 +34,15 @@ class PostController extends Controller
         return view('posts.create', ['post' => new Post]);
     }
 
-    function store(Request $request)
+    // function store(Request $request)
+    function store(SavePostRequest $request)
     {
-        $validated = $request->validate([
-            'title' => ['required', 'min:4'],
-            'body' => ['required'],
-        ], [
-            'title.required' => 'Error diferente :attribute'
-        ]);
+        // $validated = $request->validate([
+        //     'title' => ['required', 'min:4'],
+        //     'body' => ['required'],
+        // ], [
+        //     'title.required' => 'Error diferente :attribute'
+        // ]);
 
         // $post = new Post();
         // $post->title = $request->input('title');
@@ -52,12 +54,13 @@ class PostController extends Controller
         //     'body' => $request->input('body'),
         // ]);
 
-        Post::create($validated);
+        Post::create($request->validated());
 
-        session()->flash('status', 'Post created');
+        // session()->flash('status', 'Post created');
 
         // return redirect()->route('posts.index');
-        return to_route('posts.index');
+        return to_route('posts.index')
+            ->with('status', 'Post created');
     }
 
     function edit(Post $post)
@@ -65,26 +68,29 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
-    function update(Request $request, Post $post) {
-        $request->validate([
-            'title' => ['required', 'min:4'],
-            'body' => ['required'],
-        ], [
-            'title.required' => 'Error diferente :attribute'
-        ]);
+    function update(SavePostRequest $request, Post $post) {
+        // $validated = $request->validate([
+        //     'title' => ['required', 'min:4'],
+        //     'body' => ['required'],
+        // ], [
+        //     'title.required' => 'Error diferente :attribute'
+        // ]);
 
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');
         // $post->save();
 
-        $post->update([
-            'title' => $request->input('title'),
-            'body' => $request->input('body'),
-        ]);
+        // $post->update([
+        //     'title' => $request->input('title'),
+        //     'body' => $request->input('body'),
+        // ]);
 
-        session()->flash('status', 'Post updated!');
+        $post->update($request->validated());
+
+        // session()->flash('status', 'Post updated!');
 
         // return redirect()->route('posts.index');
-        return to_route('posts.show', $post);
+        return to_route('posts.show', $post)
+            ->with('status', 'Post updated');;
     }
 }
