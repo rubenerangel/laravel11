@@ -93,5 +93,7 @@
     "Blog": "Blog",
     "About": "Acerca de",
     "Contact": "Contacto",
-    "Edit Post": "Editar publicación"
+    "Edit Post": "Editar publicación",
+    "Edit": "Editar",
+    "Delete": "Eliminar"
 }

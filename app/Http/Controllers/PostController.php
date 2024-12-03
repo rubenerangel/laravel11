@@ -29,7 +29,8 @@ class PostController extends Controller
         return view('posts.show', ['post' => $post]);
     }
 
-    function create() {
+    function create()
+    {
         // return 'Create form';
         return view('posts.create', ['post' => new Post]);
     }
@@ -68,7 +69,8 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
-    function update(SavePostRequest $request, Post $post) {
+    function update(SavePostRequest $request, Post $post)
+    {
         // $validated = $request->validate([
         //     'title' => ['required', 'min:4'],
         //     'body' => ['required'],
@@ -92,5 +94,13 @@ class PostController extends Controller
         // return redirect()->route('posts.index');
         return to_route('posts.show', $post)
             ->with('status', 'Post updated');;
+    }
+
+    function destroy(Post $post)
+    {
+        $post->delete();
+
+        return to_route('posts.index')
+            ->with('status', 'Post deleted');
     }
 }
