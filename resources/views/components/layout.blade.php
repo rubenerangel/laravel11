@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $metaTitle ?? 'Learning Laravel 11' }} - Laravel 11</title>
     <meta name="description" content="{{ $metaDescription ?? 'Default description' }}" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <x-navigation />
