@@ -3,7 +3,7 @@
     meta-description="Form to create a new post"
 >
     <h1>{{ __('Create New Post') }}</h1>
-    @dump($post)
+    {{-- @dump($post) --}}
     {{-- @dump($errors->all()) --}}
     <form method="POST" action="{{ route('posts.store') }}">
         @csrf
