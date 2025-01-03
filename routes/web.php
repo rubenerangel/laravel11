@@ -26,7 +26,8 @@ Route::resource('blog', PostController::class, [
     ]
 ]);
 
-Route::view('about', 'about')->name('about');
+Route::view('about', 'about')
+    ->name('about');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
