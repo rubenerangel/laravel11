@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $metaTitle ?? 'Learning Laravel 11' }} - Laravel 11</title>
-    <meta name="description" content="{{ $metaDescription ?? 'Default description' }}" />
+    <title>{{ $metaTitle }} - Laravel 11</title>
+    <meta name="description" content="{{ $metaDescription }}" />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -13,7 +13,8 @@
 <body
     class="flex h-screen flex-col bg-slate-100 selection:bg-sky-600 selection:text-sky-50 dark:bg-slate-950"
 >
-    <x-navigation />
+    {{-- <x-navigation /> --}}
+    @include('layouts.blog-navigation')
     @session ('status')
         <div class="bg-green-600 p-4 text-xl text-green-50 dark:bg-green-800">
             {{ $value }}

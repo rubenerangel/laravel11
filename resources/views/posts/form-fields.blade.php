@@ -6,13 +6,13 @@
         name="title"
         type="text"
         value="{{ old('title', $post->title) }}"
-        class="w-full mt-1"
+        class="block w-full mt-1"
     />
     {{-- @error('title')
         <br>
         <small style="color: red">{{$message}}</small>
     @enderror --}}
-    <x-input-error :messages="$errors->get('title')" />
+    <x-input-error :messages="$errors->get('title')" class="mt-2" />
 </div>
 <div>
     {{-- <br>{{ __('Body') }} --}}
@@ -20,11 +20,11 @@
     <x-textarea
         id="body"
         name="body"
-        class="w-full mt-1"
+        class="block w-full mt-1"
     >{{ old('body', $post->body) }}</x-textarea>
     {{-- @error('body')
         <br>
         <small style="color: red">{{$message}}</small>
     @enderror --}}
-    <x-input-error :messages="$errors->get('body')" />
+    <x-input-error :messages="$errors->get('body')" class="mt-2"/>
 </div>

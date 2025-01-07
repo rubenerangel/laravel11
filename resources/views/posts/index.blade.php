@@ -1,4 +1,4 @@
-<x-layout meta-title="Blog" meta-description="Blog description">
+<x-blog-layout meta-title="Blog" meta-description="Blog description">
     <div>
         <h1
             class="my-4 text-center font-serif text-4xl font-extrabold text-sky-600 md:text-5xl">
@@ -106,4 +106,4 @@
     </div>
     {{-- @dump($post)
     @endforeach --}}
-</x-layout>
+</x-blog-layout>
